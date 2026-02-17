@@ -1,0 +1,28 @@
+# Git files
+.git
+.gitignore
+.github
+.gitattributes
+
+# Documentation
+README.md
+READMETEMPLATE.md
+CONTRIBUTING.md
+SECURITY.md
+
+# Configuration files (potentially sensitive)
+!*.conf.example
+
+# Development files
+.DS_Store
+.vscode/
+.idea/
+
+# Logs
+*.log
+*.tmp
+*.temp
+
+# Docker files not needed in build context
+docker-compose.yml
+docker-compose.override.yml

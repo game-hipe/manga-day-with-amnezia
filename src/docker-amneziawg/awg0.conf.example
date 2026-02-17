@@ -1,0 +1,45 @@
+# AmneziaWG Configuration Example
+# Copy this file to awg0.conf and customize for your setup
+
+[Interface]
+# Replace with your actual private key
+PrivateKey = YOUR_PRIVATE_KEY_HERE
+# IP address for this interface
+Address = 10.0.0.1/24
+# Port to listen on (server) or connect to (client)
+ListenPort = 51820
+
+# AmneziaWG specific obfuscation parameters
+# These parameters help bypass DPI and censorship
+# Jitter parameters
+Jc = 4          # Jitter count
+Jmin = 50       # Minimum jitter value (ms)
+Jmax = 1000     # Maximum jitter value (ms)
+
+# Packet size obfuscation
+S1 = 86         # Packet size parameter 1
+S2 = 12         # Packet size parameter 2
+
+# Header obfuscation
+H1 = 1755269708  # Header parameter 1
+H2 = 2101520157  # Header parameter 2
+H3 = 1829552136  # Header parameter 3
+H4 = 2016351429  # Header parameter 4
+
+# Server configuration example - uncomment for server setup
+# PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+# PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+
+# Client configuration example - uncomment for client setup
+# DNS = 8.8.8.8, 8.8.4.4
+
+[Peer]
+# Replace with peer's public key
+PublicKey = PEER_PUBLIC_KEY_HERE
+# For server: client's allowed IP range
+# For client: server's IP or 0.0.0.0/0 for all traffic
+AllowedIPs = 10.0.0.2/32
+# For client: server endpoint
+# Endpoint = YOUR_SERVER_IP:51820
+# For client: keep connection alive
+# PersistentKeepalive = 25

@@ -1,0 +1,12 @@
+var
+
+.venv
+venv
+
+*__pycache__
+config.yaml
+
+backups
+
+test.py
+.env

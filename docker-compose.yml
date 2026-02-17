@@ -1,0 +1,64 @@
+services:
+  amneziawg:
+    build: ./src/docker-amneziawg
+    container_name: amneziawg
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.ip_forward=1
+      - net.ipv4.conf.all.src_valid_mark=1
+      - net.ipv6.conf.all.disable_ipv6=0
+    devices:
+      - /dev/net/tun
+    volumes:
+      - ./awg0.conf:/etc/wireguard/awg0.conf
+    ports:
+      - "8888:8888"               # <-- добавляем проброс порта прокси
+    healthcheck:
+      test: ["CMD", "awg", "show"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    command: awg0
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: manga-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: manga_day
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d manga_day"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: ./src/manga-day
+
+    container_name: manga-day-v1
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      amneziawg:
+        condition: service_healthy
+    volumes:
+      - manga-day:/app/var
+    ports:
+      - "8000:8000"
+      - "8080:8080"
+
+volumes:
+  manga-day:
+  postgres_data:

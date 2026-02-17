@@ -1,0 +1,32 @@
+logging: # Логирование
+  level: "INFO" # Логирование в консоль
+  file_level: "INFO" # Логирование в файл
+  file: "var/log.logs" # Файл логирования
+
+  format: "<green>{time:YYYY-MM-DD HH:mm}</green> | <level>{level}</level> | <level>{message}</level>" # Формат логирования
+  rotation: "10 MB" # Ротация логов
+
+update:
+  start_time: "7:00 AM EVERY 7 DAYS" # Время запуска бота
+  zone: "Europe/Moscow" # Часовой пояс
+
+bot:
+  admins: [12345] # Админы бота
+
+user_bot:
+  url: "https://t.me/example_bot"
+
+api:
+  frontend_port: 8000 # Порт фронтенда
+  backend_port: 8080 # Порт бэкенда
+
+  frontend_host: "0.0.0.0" # Хост фронтенда
+  backend_host: "0.0.0.0" # Хост бэкенда
+
+pdf:
+  save_path: "var/pdf" # Путь сохранения PDF файлов
+
+proxy:
+  [
+    "http://ip:port@login:password" # Прокси
+  ]
