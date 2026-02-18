@@ -14,6 +14,7 @@ services:
       - /dev/net/tun
     volumes:
       - ./awg0.conf:/etc/wireguard/awg0.conf
+      - ./tinyproxy.conf:/etc/tinyproxy/tinyproxy.conf
     ports:
       - "8888:8888"               # <-- добавляем проброс порта прокси
     healthcheck:
@@ -55,6 +56,7 @@ services:
         condition: service_healthy
     volumes:
       - manga-day:/app/var
+      - ./config.yaml:/app/config.yaml
     ports:
       - "8000:8000"
       - "8080:8080"
