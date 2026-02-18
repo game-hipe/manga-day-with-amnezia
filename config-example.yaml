@@ -28,5 +28,5 @@ pdf:
 
 proxy:
   [
-    "http://ip:port@login:password" # Прокси
+    "http://host.docker.internal:8888" # Прокси либо можете добавить в виде: http://ip:port@login:password
   ]
