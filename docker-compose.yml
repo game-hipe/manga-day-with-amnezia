@@ -1,6 +1,6 @@
 services:
   amneziawg:
-    build: ./src/docker-amneziawg
+    build: ./src/tinyproxy
     container_name: amneziawg
     restart: unless-stopped
     cap_add:
