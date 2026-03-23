@@ -43,6 +43,15 @@ services:
       timeout: 5s
       retries: 5
 
+  pdf:
+    build: ./microservice/pdf
+    container_name: manga-pdf 
+    restart: always
+    ports:
+      - "3040:3040"
+    environment:
+      - PROXY=http://localhost:8888 # Если такового не имеется удалить environment
+
   app:
     build: ./src/manga-day
 
