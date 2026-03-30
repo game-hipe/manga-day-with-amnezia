@@ -60,7 +60,7 @@ services:
       retries: 5
 
   frontend:
-    build: ./src/manga_day/src/frontend
+    build: ./src/manga-day/src/frontend
     container_name: manga-frontend
     restart: always
     ports:
