@@ -68,7 +68,8 @@ services:
     environment:
       - FRONTEND_HOST=0.0.0.0
       - FRONTEND_PORT=8000
-      - API_URL=http://127.0.0.1:8080
+      - API_URL=http://192.168.0.50:8080
+      - BACKEND_PORT=8080 # Что-бы узнать подробнее читать README.md `src/frontend/README.md`
 
     healthcheck:
       test: ["CMD-SHELL", "python", "health.py"]
