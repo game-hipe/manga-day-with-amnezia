@@ -76,10 +76,25 @@ services:
       timeout: 10s
       retries: 5
 
+  bot:
+    build: ./src/manga-day/src/bot
+    container_name: manga-bot
+    restart: always
+    environment:
+      - ADMIN_BOT_TOKEN=1234567:QWERTYUIOP
+      - ADMIN_USERNAME=admin
+      - ADMIN_PASSWORD=admin
+      - ADMIN_IDS=12345,12346
+      - USER_BOT_TOKEN=1234567:QWERTYUIOP
+      - API_URL=http://localhost:8080
+      - PDF_URL=http://localhost:3040
+      - SITE_URL=http://192.168.0.50:8000
+      - PROXY=http://localhost:8888
+
   app:
     build: ./src/manga-day
-
     container_name: manga-day-v1
+    restart: always
     env_file:
       - .env
     depends_on:
