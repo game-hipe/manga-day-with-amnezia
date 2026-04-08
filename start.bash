@@ -16,8 +16,13 @@ else
     (cd src/manga-day && git pull)
 fi
 
-if [ ! -f .env ]; then
-    echo "Env file not found. Please create a .env file with the necessary environment variables."
+if [ ! -f api.env ]; then
+    echo "API Env file not found. Please create a .env file with the necessary environment variables."
+    exit 1
+fi
+
+if [ ! -f bot.env ]; then
+    echo "BOT Env file not found. Please create a .env file with the necessary environment variables."
     exit 1
 fi
 
