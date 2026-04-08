@@ -3,3 +3,6 @@ config.yaml
 awg0.conf
 
 src
+
+api.env
+bot.env

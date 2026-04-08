@@ -4,9 +4,15 @@
 ## Как запустить?
 1. Скопировать данный репозиторий `git clone https://github.com/game-hipe/manga-day-with-amnezia.git`
 2. Засунуть свой конфиг в и переименовать в `awg0.conf` (Пример конфига в **awg0.conf.example**)
-3. Настроить `.env` (Пример конфига в **env.example**)
-4. Настроить `config.yaml` (пример **config-example.yaml**)
-5. Сборка Docker-а, и запуск
+
+3. Настроить `api.env` (Пример конфига в **api.env.example**)
+
+4. Настроить `bot.env` (Пример конфига в **bot.env.example**)
+
+5. Настроить `config.yaml` (пример **config-example.yaml**)
+
+6. Сборка Docker-а, и запуск
+
 ```bash
 chmod +x start.bash
 ./start.bash
